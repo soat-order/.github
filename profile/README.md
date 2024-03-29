@@ -1,6 +1,6 @@
 # README
 
-Instruções para rodar a aplicação:
+<mark>Instruções para rodar a aplicação:</mark>
 
 Justificativa do Padrão SAGA escolhido:
 

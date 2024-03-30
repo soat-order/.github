@@ -30,7 +30,7 @@ Soat-Order-Status: https://github.com/soat-order/.github/blob/main/DAST%20-%20ZA
 https://github.com/soat-order/.github/blob/main/RIPD%20-%20Relat%C3%B3rio%20de%20Impacto%20de%20Prote%C3%A7%C3%A3o%20de%20Dados.docx
 
 ### Link com o desenho para arquitetura:
-https://github.com/soat-order/.github/blob/main/Diagrama%20de%20Arquitetura%20Soat-Order-App
+https://github.com/soat-order/.github/blob/main/Diagrama%20de%20Arquitetura%20Soat-Order-App.pdf
 
 ### Link para o Vídeo com a aplicação rodando:
-https://github.com/soat-order/.github/blob/main/Video%20POC%20Soat-Order-App
+https://github.com/soat-order/.github/blob/main/Video%20POC%20Soat-Order-App.mp4

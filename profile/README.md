@@ -5,7 +5,21 @@
 ### Justificativa do Padrão SAGA escolhido:
 Por dificuldades em levantar um cluster em nuvem pública, e também pela dificuldade em seguir o padrão de arquitetura clean e de microsserviços com Python (linguagem que utilizamos na primeira entrega sem saber que elas seriam incrementais), o padrão SAGA escolhido foi o coreografado, por oferecer uma abordagem descentralizada para transações, reduzindo o acoplamento centralizado ao permitir que cada serviço tome decisões localmente com base nos eventos observados. Isso permite que, apesar das dificuldades encontradas durante o desenvolvimento, nos conseguimos fazer um sistema escalável, resiliente e flexível, pois cada um dos serviços (food, payment e status) possa gerenciar seus próprios eventos de compensação em caso de falha, facilitando também a evolução do sistema ao longo do tempo. Além disso, essa abordagem pode reduzir a latência, pois as decisões são tomadas localmente sem a necessidade de comunicações adicionais com um orquestrador central, resultando em tempos de resposta mais rápidos e uma melhor experiência para o usuário final.
 
-### Links com os relatórios do DAST antes e após correção:
+### Links com os Repositórios de cada Microsserviço:
+Soat-Order-Food (pedido): https://github.com/soat-order/soat-order-food
+
+Soat-Order-Payment (pagamento): https://github.com/soat-order/soat-order-payment
+
+Soat-Order-Status (status): https://github.com/soat-order/soat-order-status
+
+### Links com os relatórios do SAST:
+Soat-Order-Food: https://github.com/soat-order/soat-order-food/security/code-scanning
+
+Soat-Order-Payment: https://github.com/soat-order/soat-order-payment/security/code-scanning
+
+Soat-Order-Status: https://github.com/soat-order/soat-order-status/security/code-scanning
+
+### Links com os relatórios do DAST:
 Soat-Order-Food: https://github.com/soat-order/.github/blob/main/DAST%20-%20ZAP%20-%20Soat-Order-Food.zip
 
 Soat-Order-Payment: https://github.com/soat-order/.github/blob/main/DAST%20-%20ZAP%20-%20Soat-Order-Payment.zip

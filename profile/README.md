@@ -6,6 +6,10 @@
 
 ### Links com os relatórios do DAST antes e após correção:
 
+Soat-Order-Food: https://github.com/soat-order/.github/blob/main/DAST%20-%20ZAP%20-%20Soat-Order-Food.zip
+Soat-Order-Payment:
+Soat-Order-Status:
+
 ### Link com o Relatório RIPD: 
 https://github.com/soat-order/.github/blob/main/RIPD%20-%20Relat%C3%B3rio%20de%20Impacto%20de%20Prote%C3%A7%C3%A3o%20de%20Dados.docx
 

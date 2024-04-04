@@ -36,20 +36,20 @@ jobs:
     - name: Autenticar
       run: |
         curl --request POST --url http://localhost:8000/soat-order-food/v1/auth/singup --header 'Content-Type: application/json' --data '{"username": "soat.order",	"password": "food",	"email": "soat.order@fiap.com.br"}'
-        curl --request POST --url http://localhost:8000/soat-order-food/v1/auth/login/token --header 'Authorization: Basic c29hdC5vcmRlcjpmb29k'
-        curl --request POST --url http://localhost:8000/soat-order-food/v1/auth/login/token --header 'Authorization: Basic c29hdC5vcmRlcjpmb29k'
+        response=$(curl -s --request POST --url http://localhost:8000/soat-order-food/v1/auth/login/token --header 'Authorization: Basic c29hdC5vcmRlcjpmb29k')
+        bToken=$(echo "$response" | jq -r '.data[].access_token')
+        echo $bToken
 
     - name: Cadastrar e Ativar Cliente
       run: |
         curl --request POST --url http://localhost:8000/soat-order-food/v1/customers/ --header 'Content-Type: application/json' --data '{"name": "FIAP 1",	"documentNumber": "000.000.000-00",	"email": "soat.order@fiap.com.br",	"phoneNumber": "19912345678"}'
         sleep 5
-        response=$(curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiSFMyNTYiLCJleHAiOjE3MTIyMTEwNzksImlhdCI6MTcxMjIwNzQ3OSwic3ViIjoic29hdC5vcmRlcnw2MjUwNmJlMy00ZDU3LTRkYTQtYTBkMS01OGE2NzI1M2VhOTkifQ.AhP3199eLLdXjzPjitx4qiaYjwv3vRgbUgCm_YnoN5Q")
+        response=$(curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ --header "Authorization: Bearer $bToken")
         desired_name="FIAP 1"
         id=$(echo "$response" | jq -r --arg desired_name "$desired_name" '.data[] | select(.name == $desired_name) | .id')
         echo "Cliente cadastrado $desired_name: $id"
-        curl --request PUT --url http://localhost:8000/soat-order-food/v1/customers/$id/inactive --header 'Content-Type: application/json' --data '{"inactive": false}'
-
-        
+        curl --request PUT --url http://localhost:8000/soat-order-food/v1/customers/$id/inactive --header 'Content-Type: application/json' --data '{"inactive": false}'        
+    
     - name: Cadastrar e Ver Produtos
       run: |
         curl --request POST --url http://localhost:8000/soat-order-food/v1/products/ --header 'Content-Type: application/json' --data '{"code": "COCA350",	"name": "COCA COLA LATA 350ML",	"amount": 6.00,	"type": "BEBIDA"}'
@@ -98,7 +98,7 @@ jobs:
       run: |
         curl --request PUT --url http://localhost:8000/soat-order-food/v1/customers/$id/inactive --header 'Content-Type: application/json' --data '{"inactive": true}'
         sleep 5
-        curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiSFMyNTYiLCJleHAiOjE3MTIyMTEwNzksImlhdCI6MTcxMjIwNzQ3OSwic3ViIjoic29hdC5vcmRlcnw2MjUwNmJlMy00ZDU3LTRkYTQtYTBkMS01OGE2NzI1M2VhOTkifQ.AhP3199eLLdXjzPjitx4qiaYjwv3vRgbUgCm_YnoN5Q"
+        curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ --header "Authorization: Bearer $bToken"
 
         
         

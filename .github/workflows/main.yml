@@ -1,0 +1,28 @@
+name: Demo-Payment
+
+on: 
+ workflow_dispatch:
+
+jobs:
+   Build-endpoint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Clone Food
+      run: git clone https://github.com/soat-order/soat-order-food.git
+
+    - name: Build Food
+      run: cd ./soat-order-food/ci/; docker-compose -f "docker-compose-local.yml" up -d --build
+
+    - name: Clone Status
+      run: git clone https://github.com/soat-order/soat-order-status.git
+
+    - name: Build Status
+      run: cd ./soat-order-status/ci/; docker-compose -f "docker-compose-local.yml" up -d --build
+
+    - name: Clone Payment
+      run: git clone https://github.com/soat-order/soat-order-payment.git
+
+    - name: Build Payment
+      run: cd ./soat-order-payment/ci/; docker-compose -f "docker-compose-local.yml" up -d --build

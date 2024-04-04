@@ -1,13 +1,15 @@
 #!/bin/bash
 
 #Buildando os containers
+echo "Baixando os repositórios"
+git clone https://github.com/soat-order/soat-order-food.git
+git clone https://github.com/soat-order/soat-order-status.git
+git clone https://github.com/soat-order/soat-order-payment.git
+
 echo "Buildando os containers"
-cd /home/$USER/soat-order-food/ci
-sudo docker-compose -f docker-compose-local.yml up -d
-cd /home/$USER/soat-order-status/ci
-sudo docker-compose -f docker-compose-local.yml up -d
-cd /home/$USER/soat-order-payment/ci
-sudo docker-compose -f docker-compose-local.yml up -d
+sudo docker-compose -f  $PWD/soat-order-food/ci/docker-compose-local.yml up -d
+sudo docker-compose -f $PWD/soat-order-status/ci/docker-compose-local.yml up -d
+sudo docker-compose -f $PWD/soat-order-payment/ci/docker-compose-local.yml up -d
 sleep 30
 
 #Autenticar
@@ -89,9 +91,11 @@ curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ 
 
 #Removendo os containers
 echo -e "\n\nRemovendo os containers"
-cd /home/$USER/soat-order-food/ci
-sudo docker-compose -f docker-compose-local.yml down
-cd /home/$USER/soat-order-status/ci
-sudo docker-compose -f docker-compose-local.yml down
-cd /home/$USER/soat-order-payment/ci
-sudo docker-compose -f docker-compose-local.yml down
+sudo docker-compose -f  $PWD/soat-order-food/ci/docker-compose-local.yml down
+sudo docker-compose -f  $PWD/soat-order-status/ci/docker-compose-local.yml down
+sudo docker-compose -f  $PWD/soat-order-status/ci/docker-compose-local.yml down
+
+echo "Limpando os repositórios"
+sudo rm -R $PWD/soat-order-food
+sudo rm -R $PWD/soat-order-status
+sudo rm -R $PWD/soat-order-payment

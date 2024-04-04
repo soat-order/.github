@@ -1,4 +1,4 @@
-name: Demo-Payment
+name: Local-test
 
 on: 
  workflow_dispatch:

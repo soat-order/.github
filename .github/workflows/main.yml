@@ -73,7 +73,7 @@ jobs:
 
     - name: Atualização de Status para em Preparação
       run: |
-        curl --request PUT --url http://localhost:8000/soat-order-food/v1/orders/$orderId/status/in_preparation        
+        curl --request PUT --url http://localhost:8000/soat-order-food/v1/orders/$orderId/status/in_preparation/
         response=$(curl -s --request GET --url http://localhost:8000/soat-order-food/v1/orders/)
         echo $response
         status=$(echo "$response" | jq -r '.data[].status')
@@ -81,7 +81,7 @@ jobs:
 
     - name: Atualização de Status para Finalizado
       run: |
-        curl --request PUT --url http://localhost:8000/soat-order-food/v1/orders/$orderId/status/finished
+        curl --request PUT --url http://localhost:8000/soat-order-food/v1/orders/$orderId/status/finished/
         response=$(curl -s --request GET --url http://localhost:8000/soat-order-food/v1/orders/)
         echo $response
         status=$(echo "$response" | jq -r '.data[].status')
@@ -90,6 +90,7 @@ jobs:
     - name: Cliente solicitou exclusão de cadastro
       run: |
         curl --request PUT --url http://localhost:8000/soat-order-food/v1/customers/$id/inactive --header 'Content-Type: application/json' --data '{"inactive": true}'
+        curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiSFMyNTYiLCJleHAiOjE3MTIyMTEwNzksImlhdCI6MTcxMjIwNzQ3OSwic3ViIjoic29hdC5vcmRlcnw2MjUwNmJlMy00ZDU3LTRkYTQtYTBkMS01OGE2NzI1M2VhOTkifQ.AhP3199eLLdXjzPjitx4qiaYjwv3vRgbUgCm_YnoN5Q"
 
         
         

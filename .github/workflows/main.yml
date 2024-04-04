@@ -97,7 +97,7 @@ jobs:
        curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ --header "Authorization: Bearer $bToken"
 
        #Removendo os containers
-       echo -e "\n\nRemovendo os containers"
-       sudo docker-compose -f  $PWD/soat-order-payment/ci/docker-compose-local.yml down
-       sudo docker-compose -f $PWD/$USER/soat-order-status/ci/docker-compose-local.yml down
-       sudo docker-compose -f $PWD/$USER/soat-order-food/ci/docker-compose-local.yml down
+       #echo -e "\n\nRemovendo os containers"
+       #sudo docker-compose -f  $PWD/soat-order-payment/ci/docker-compose-local.yml down
+       #sudo docker-compose -f $PWD/$USER/soat-order-status/ci/docker-compose-local.yml down
+       #sudo docker-compose -f $PWD/$USER/soat-order-food/ci/docker-compose-local.yml down

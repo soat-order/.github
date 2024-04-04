@@ -47,7 +47,6 @@ jobs:
       run: |
         echo -e "\n\nCadastrando o cliente Professor"
         curl --request POST --url http://localhost:8000/soat-order-food/v1/customers/ --header 'Content-Type: application/json' --data '{"name": "Professor",   "documentNumber": "123.456.123-45",     "email": "professor@fiap.com.br",       "phoneNumber": "11912345678"}'
-        sleep 5
         response=$(curl -s --request GET --url http://localhost:8000/soat-order-food/v1/customers/ --header "Authorization: Bearer $bToken")
         nomeCliente="Professor"
         id=$(echo "$response" | jq -r --arg nomeCliente "$nomeCliente" '.data[] | select(.name == $nomeCliente) | .id')

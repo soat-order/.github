@@ -48,6 +48,7 @@ jobs:
         id=$(echo "$response" | jq -r --arg desired_name "$desired_name" '.data[] | select(.name == $desired_name) | .id')
         echo "Cliente cadastrado $desired_name: $id"
         curl --request PUT --url http://localhost:8000/soat-order-food/v1/customers/$id/inactive --header 'Content-Type: application/json' --data '{"inactive": false}'
+
         
     - name: Cadastrar e Ver Produtos
       run: |

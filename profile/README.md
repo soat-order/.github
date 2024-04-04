@@ -1,7 +1,7 @@
 # README
 
 ### Instruções para rodar a aplicação:
-OBS: Para facilitar a visualização e entendimento dos microsserviços, criamos um workflow no github actions com todas as etapas do negócio. É possível ver o workflow (e copia-lo para testar) em: https://github.com/soat-order/.github/actions
+OBS: Para facilitar a visualização e entendimento dos microsserviços, criamos um workflow no github actions com todas as etapas do negócio. É possível ver o workflow (e copia-lo para testar) em: https://github.com/soat-order/.github/actions . Caso o professor prefira, é possível utilizar o script abaixo https://github.com/soat-order/.github/blob/main/APIs-test.sh (basta rodar um /bin/bash nele e colocar a senha de sudo quando solicitado para buildar os containers ou remover os repositórios baixados). 
 
 Para rodar a aplicação: 1) Clonar o repositório de todos os trës endpoints (Food, Payment e Status), 2) realizar o docker-compose de cada serviço 3) Usar a documentaçâo de collections para testar (https://github.com/soat-order/.github/blob/main/Insomnia_SOAT_ORDER_FIAP_20240403.json).
 

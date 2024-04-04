@@ -98,6 +98,6 @@ jobs:
 
        #Removendo os containers
        echo -e "\n\nRemovendo os containers"
-       sudo docker-compose -f  $PWD/soat-order-food/ci/docker-compose-local.yml down
+       sudo docker-compose -f  $PWD/soat-order-payment/ci/docker-compose-local.yml down
        sudo docker-compose -f $PWD/$USER/soat-order-status/ci/docker-compose-local.yml down
-       sudo docker-compose -f $PWD/$USER/soat-order-status/ci/docker-compose-local.yml down
+       sudo docker-compose -f $PWD/$USER/soat-order-food/ci/docker-compose-local.yml down

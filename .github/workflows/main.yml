@@ -16,8 +16,12 @@ jobs:
       run: cd ./soat-order-food/ci/; docker-compose -f "docker-compose-local.yml" up -d --build
 
     - name: Test Food
-      run: curl --request GET --url http://localhost:8000/soat-order-food/v1/health/actuator --header 'Content-Type: application/json' --header 'User-Agent: insomnia/8.6.1'
-
+      run: |
+        curl --request GET \
+        --url http://localhost:8000/soat-order-food/v1/health/actuator \
+        --header 'Content-Type: application/json' \
+        --header 'User-Agent: insomnia/8.6.1'
+      
     - name: Clone Status
       run: git clone https://github.com/soat-order/soat-order-status.git
 

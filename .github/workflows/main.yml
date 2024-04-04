@@ -4,7 +4,7 @@ on:
  workflow_dispatch:
 
 jobs:
-   Build-endpoint:
+   Build-All-Endpoints:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -14,6 +14,12 @@ jobs:
 
     - name: Build Food
       run: cd ./soat-order-food/ci/; docker-compose -f "docker-compose-local.yml" up -d --build
+
+    - name: Test Food
+      run: curl --request GET \
+  --url http://localhost:8000/soat-order-food/v1/health/actuator \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.1'
 
     - name: Clone Status
       run: git clone https://github.com/soat-order/soat-order-status.git

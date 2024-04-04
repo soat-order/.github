@@ -3,7 +3,7 @@
 ### Instruções para rodar a aplicação:
 OBS: Para facilitar a visualização e entendimento dos microsserviços, criamos um workflow no github actions com todas as etapas do negócio. É possível ver o workflow (e copia-lo para testar) em: https://github.com/soat-order/.github/actions
 
-Para rodar a aplicação: 1) Clonar o repositório de todos os trës endpoints (Food, Payment e Status), 2) realizar o docker-compose de cada serviço 3) Usar a documentaçâo da Collections para testar (https://github.com/soat-order/.github/blob/main/Insomnia_SOAT_ORDER_FIAP_20240403.json).
+Para rodar a aplicação: 1) Clonar o repositório de todos os trës endpoints (Food, Payment e Status), 2) realizar o docker-compose de cada serviço 3) Usar a documentaçâo de collections para testar (https://github.com/soat-order/.github/blob/main/Insomnia_SOAT_ORDER_FIAP_20240403.json).
 
 Como funciona a aplicação: Com o microsserviço Food é possível autenticar e buscar o token (/v1/auth/singup; /v1/auth/login/token), cadastrar e ver clientes (/v1/customers), realizar exclusaçâo lógica dos clientes (/v1/customers/$cliente-token/inactive), cadastrar e ver produtos (/v1/products), realizar e ver pedidos (/v1/orders). O microsserviço Payment é utilizado para postar o id do pedido com as informações de pagamento na fila do SQS (/v1/payments), que será consumida pelo microsserviço Status.
 

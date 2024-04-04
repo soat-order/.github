@@ -17,7 +17,7 @@ jobs:
        git clone https://github.com/soat-order/soat-order-payment.git
        docker-compose -f  $PWD/soat-order-food/ci/docker-compose-local.yml up -d
        docker-compose -f $PWD/soat-order-status/ci/docker-compose-local.yml up -d
-       docker-compose -f $PWD/soat-order-status/ci/docker-compose-local.yml up -d
+       docker-compose -f $PWD/soat-order-payment/ci/docker-compose-local.yml up -d
 
        #Autenticar
        echo -e "\n\nAutenticando na aplicação com usuario soat-order"
@@ -56,7 +56,7 @@ jobs:
        orderId=$(echo "$response" | jq -r '.data | sort_by(.issueDateTime) | reverse | .[0].id')
        status=$(echo "$response" | jq -r '.data | sort_by(.issueDateTime) | reverse | .[0].status')
        echo -e "\n\nPedido do cliente $nomeCliente cadastrado com o id $orderId com o status $status"
-       echo "\n\n teste"
+       
        
        #Realizar pagamento
        echo -e "\n\nRealizando pagamento"

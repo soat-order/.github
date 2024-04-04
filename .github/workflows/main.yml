@@ -11,22 +11,24 @@ jobs:
     
     - name: Clone Food
       run: git clone https://github.com/soat-order/soat-order-food.git
-
     - name: Build Food
       run: cd ./soat-order-food/ci/; docker-compose -f "docker-compose-local.yml" up -d --build
-
     - name: Test Food
       run: |
         sleep 30; docker ps; curl -v --request GET --url http://localhost:8000/soat-order-food/v1/health/actuator --header 'Content-Type: application/json' --header 'User-Agent: insomnia/8.6.1'
       
     - name: Clone Status
       run: git clone https://github.com/soat-order/soat-order-status.git
-
     - name: Build Status
       run: cd ./soat-order-status/ci/; docker-compose -f "docker-compose-local.yml" up -d --build
-
+    - name: Test Status
+      run: |
+        sleep 30; docker ps; curl -v --request GET --url http://localhost:8002/soat-order-status/v1/health/actuator --header 'User-Agent: insomnia/8.6.1'
+      
     - name: Clone Payment
       run: git clone https://github.com/soat-order/soat-order-payment.git
-
     - name: Build Payment
       run: cd ./soat-order-payment/ci/; docker-compose -f "docker-compose-local.yml" up -d --build
+    - name: Test Payment
+      run: |
+        sleep 30; docker ps; curl -v --request GET --url http://localhost:8001/soat-order-payment/v1/health/actuator --header 'User-Agent: insomnia/8.6.1'
